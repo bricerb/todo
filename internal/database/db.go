@@ -1,21 +1,21 @@
 package database
 
 import (
-	"database/sql"
 	"time"
 
 	"brice.io/todo/internal/helpers/elog"
+	"github.com/jmoiron/sqlx"
 )
 
 type Database interface {
-	ConnectDB() *sql.DB
+	ConnectDB() *sqlx.DB
 }
 
 // Max Seconds before attempting to reconnect
 const DB_CONNECTION_TIMEOUT = 10
 
 // Attempt db connection
-func try(err error, db *sql.DB, counts *int) error {
+func try(err error, db *sqlx.DB, counts *int) error {
 	if err != nil {
 		// increasing counter
 		elog.New(elog.ERROR, "Trying to connect to database", err)

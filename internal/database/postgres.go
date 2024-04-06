@@ -2,10 +2,11 @@ package database
 
 import (
 	"context"
-	"database/sql"
+
 	"fmt"
 
 	"brice.io/todo/env"
+	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
@@ -16,7 +17,7 @@ type PostgresDB struct {
 }
 
 // Ping
-func (m *PostgresDB) ping(err error, db *sql.DB) error {
+func (m *PostgresDB) ping(err error, db *sqlx.DB) error {
 	if err != nil {
 		return err
 	}
@@ -31,17 +32,10 @@ func (m *PostgresDB) ping(err error, db *sql.DB) error {
 }
 
 // Connect
-func (m *PostgresDB) connect() (*sql.DB, error) {
+func (m *PostgresDB) connect() (*sqlx.DB, error) {
 	// try open connection
-	db, err := sql.Open(
-		m.config.DB_ENGINE,
-		fmt.Sprintf(
-			"%s@tcp(%s:%s)/%s",
-			m.config.DB_USERNAME,
-			m.config.DB_HOST,
-			m.config.DB_PORT,
-			m.config.DB_DATABASE,
-		))
+	conn_str := fmt.Sprintf( "user=%s dbname=%s sslmode=disable host=%s", m.config.DB_USERNAME, m.config.DB_DATABASE, m.config.DB_HOST)
+	db, err := sqlx.Connect(m.config.DB_ENGINE, conn_str)
 
 	// try ping
 	if m.ping(err, db) != nil {
@@ -52,7 +46,7 @@ func (m *PostgresDB) connect() (*sql.DB, error) {
 }
 
 // Get connection
-func (m *PostgresDB) ConnectDB() *sql.DB {
+func (m *PostgresDB) ConnectDB() *sqlx.DB {
 	counts := 0
 
 	for {

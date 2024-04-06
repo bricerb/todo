@@ -2,9 +2,9 @@ package server
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 
+	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -12,7 +12,7 @@ import (
 type EchoServer struct {
 	*echo.Echo
 	ctx  context.Context
-	db   *sql.DB
+	db   *sqlx.DB
 	port string
 }
 
@@ -20,7 +20,7 @@ func (es *EchoServer) configure() {
 
 	// console output
 	es.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format:           "${time_custom} : ${method} => ${uri}, status={$status} ::$error}\n",
+		Format:           "${time_custom} : ${method} => ${uri}, status={$status}::$error}\n",
 		CustomTimeFormat: "15:04.05.00000",
 	}))
 
@@ -44,7 +44,7 @@ func (es *EchoServer) Run() {
 }
 
 // New Server instance
-func NewEchoServer(ctx context.Context, db *sql.DB, app_port string) Server {
+func NewEchoServer(ctx context.Context, db *sqlx.DB, app_port string) Server {
 	if app_port == "" {
 		app_port = "8080"
 	}

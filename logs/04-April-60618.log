@@ -1,0 +1,18 @@
+40:44:46.18496 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.18753 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.19690 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.19740 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.21302 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.21352 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.22900 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.22950 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.24554 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.24604 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.25902 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.25952 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.27653 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.27703 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.28952 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.29003 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.30692 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+40:44:46.30742 FATAL:  Failure to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.

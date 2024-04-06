@@ -2,10 +2,10 @@ package todo
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 
 	"brice.io/todo/core/entities"
+	"github.com/jmoiron/sqlx"
 )
 
 // Gateway access to storage
@@ -26,7 +26,7 @@ func (t *ToDoLogic) ListToDo() (int, []entities.ToDo) {
 
 // Create ToDo
 func (t *ToDoLogic) CreateToDo(td *entities.ToDo) (int, entities.Response) {
-	
+
 	// Invalid name logic
 	if td.Name == "" {
 		return http.StatusOK, entities.Response{
@@ -37,7 +37,7 @@ func (t *ToDoLogic) CreateToDo(td *entities.ToDo) (int, entities.Response) {
 
 	// Create ToDo
 	go t.St.insertToDoInDb(td)
-	
+
 	// Accepted response
 	return http.StatusAccepted, entities.Response{
 		Message: "ToDo successfully added",
@@ -46,6 +46,6 @@ func (t *ToDoLogic) CreateToDo(td *entities.ToDo) (int, entities.Response) {
 }
 
 // Constructor
-func NewToDoGateway(ctx context.Context, db *sql.DB) ToDoGateway {
+func NewToDoGateway(ctx context.Context, db *sqlx.DB) ToDoGateway {
 	return &ToDoLogic{NewToDoStorage(ctx, db)}
 }

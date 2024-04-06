@@ -2,11 +2,11 @@ package app
 
 import (
 	"context"
-	"database/sql"
 
 	"brice.io/todo/core/entities"
 	todo "brice.io/todo/core/infrastructure"
 	"brice.io/todo/internal/helpers"
+	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
 )
 
@@ -31,11 +31,14 @@ func (t *ToDoHTTPService) CreateHandler(c echo.Context) error {
 	// Generate new UUID
 	td.ID = helpers.UUID()
 
+	// Default value
+	td.Complete = false
+
 	status, res := t.gtw.CreateToDo(td)
 	return c.JSON(status, res)
 }
 
 // Constructor
-func NewToDoHTTPService(ctx context.Context, db *sql.DB) *ToDoHTTPService {
+func NewToDoHTTPService(ctx context.Context, db *sqlx.DB) *ToDoHTTPService {
 	return &ToDoHTTPService{todo.NewToDoGateway(ctx, db)}
 }
