@@ -45,10 +45,12 @@ func (t *ToDoService) listToDoInDb() []entities.ToDo {
 
 // Insert New ToDo
 func (t *ToDoService) insertToDoInDb(td *entities.ToDo) {
-
+	querystring := `INSERT INTO todo (id, name, complete) VALUES ($1, $2, $3)`
+	_, err := t.db.ExecContext(t.ctx, querystring, td.ID, td.Name, td.Complete)
+	go elog.New(elog.ERROR, "Error inserting a ToDo in db", err)
 }
 
 // Constructor
-func NewToDoStorage(ctx context.Context) ToDoStorage {
-	return &ToDoService{ctx: ctx}
+func NewToDoStorage(ctx context.Context, db *sql.DB) ToDoStorage {
+	return &ToDoService{db: db, ctx: ctx}
 }
