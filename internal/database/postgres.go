@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-
 	"fmt"
 
 	"brice.io/todo/env"
@@ -34,7 +33,7 @@ func (m *PostgresDB) ping(err error, db *sqlx.DB) error {
 // Connect
 func (m *PostgresDB) connect() (*sqlx.DB, error) {
 	// try open connection
-	conn_str := fmt.Sprintf( "user=%s dbname=%s sslmode=disable host=%s", m.config.DB_USERNAME, m.config.DB_DATABASE, m.config.DB_HOST)
+	conn_str := fmt.Sprintf("user=%s dbname=%s sslmode=disable host=%s", m.config.DB_USERNAME, m.config.DB_DATABASE, m.config.DB_HOST)
 	db, err := sqlx.Connect(m.config.DB_ENGINE, conn_str)
 
 	// try ping

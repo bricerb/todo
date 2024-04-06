@@ -2,7 +2,6 @@ package todo
 
 import (
 	"context"
-	"fmt"
 
 	"brice.io/todo/core/entities"
 	"brice.io/todo/internal/helpers/elog"
