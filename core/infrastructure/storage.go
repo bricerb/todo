@@ -5,6 +5,7 @@ import (
 	"database/sql"
 
 	"brice.io/todo/core/entities"
+	"brice.io/todo/internal/helpers/elog"
 )
 
 // ToDo Repository
@@ -21,7 +22,25 @@ type ToDoService struct {
 
 // Get ToDo list
 func (t *ToDoService) listToDoInDb() []entities.ToDo {
-	return nil
+	querystring := `SELECT id, name, complete FROM todo ORDER BY _name ASC`
+	rows, err := t.db.QueryContext(t.ctx, querystring)
+
+	// iferr
+	if err != nil {
+		return nil
+	}
+
+	var todos []entities.ToDo
+	for rows.Next() {
+		var td entities.ToDo
+		err = rows.Scan(&td.ID, &td.Name, &td.Complete)
+		go elog.New(elog.ERROR, "Error getting list of ToDo", err)
+
+		todos = append(todos, td)
+	}
+	defer rows.Close()
+
+	return todos
 }
 
 // Insert New ToDo

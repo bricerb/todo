@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"log"
 
 	"brice.io/todo/env"
 	"brice.io/todo/internal/database"
@@ -15,6 +16,9 @@ func Start() {
 
 	// env
 	_env := env.GetEnv(".env.development")
+
+	// log env
+	log.Println("Configs: ", _env)
 
 	// DB
 	db := database.NewMySQLDatabase(ctx, _env).ConnectDB()
