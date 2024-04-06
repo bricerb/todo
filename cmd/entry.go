@@ -25,6 +25,6 @@ func Start() {
 	defer db.Close()
 
 	// Server
-	server.NewEchoServer(ctx, _env.SERVER_PORT).Run()
+	server.NewEchoServer(ctx, db, _env.SERVER_PORT).Run()
 
 }
