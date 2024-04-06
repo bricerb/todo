@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"brice.io/todo/env"
@@ -25,7 +24,9 @@ func Start() {
 	db := database.NewMySQLDatabase(ctx, _env).ConnectDB()
 	defer db.Close()
 
-	fmt.Printf("db: %v", db)
+	// Log start info
+	log.Printf("db: %v", db)
+
 	// Server
 	server.NewEchoServer(ctx, db, _env.SERVER_PORT).Run()
 
