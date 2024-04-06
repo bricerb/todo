@@ -23,9 +23,7 @@ type ToDoService struct {
 
 // Get ToDo list
 func (t *ToDoService) listToDoInDb() []entities.ToDo {
-	fmt.Println("db rows")
 	querystring := `SELECT id, name, complete FROM todo ORDER BY name ASC`
-	// rows, err := t.db.QueryContext(t.ctx, querystring)
 	rows, err := t.db.QueryxContext(t.ctx, querystring)
 
 	// iferr
@@ -37,9 +35,7 @@ func (t *ToDoService) listToDoInDb() []entities.ToDo {
 	var todos []entities.ToDo
 	for rows.Next() {
 		var td entities.ToDo
-		// err = rows.Scan(&td.ID, &td.Name, &td.Complete)
 		err = rows.StructScan(&td)
-		fmt.Println("td", td)
 		if err != nil {
 			go elog.New(elog.ERROR, "Error getting list of ToDo", err)
 		}
