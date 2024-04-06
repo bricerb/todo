@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"database/sql"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -10,7 +11,8 @@ import (
 
 type EchoServer struct {
 	*echo.Echo
-	ctx context.Context
+	ctx  context.Context
+	db   *sql.DB
 	port string
 }
 
@@ -18,7 +20,7 @@ func (es *EchoServer) configure() {
 
 	// console output
 	es.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format: "${time_custom} : ${method} => ${uri}, status={$status} ::$error}\n",
+		Format:           "${time_custom} : ${method} => ${uri}, status={$status} ::$error}\n",
 		CustomTimeFormat: "15:04.05.00000",
 	}))
 
@@ -42,7 +44,7 @@ func (es *EchoServer) Run() {
 }
 
 // New Server instance
-func NewEchoServer(ctx context.Context, app_port string) Server {
+func NewEchoServer(ctx context.Context, db *sql.DB, app_port string) Server {
 	if app_port == "" {
 		app_port = "8080"
 	}
@@ -50,6 +52,7 @@ func NewEchoServer(ctx context.Context, app_port string) Server {
 	server := &EchoServer{
 		echo.New(),
 		ctx,
+		db,
 		app_port,
 	}
 	server.configure()
