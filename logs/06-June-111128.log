@@ -1,0 +1,22 @@
+60:66:611.62106 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.62205 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.62759 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.62808 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63036 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63083 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63371 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63470 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63666 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.63716 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.64217 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.64267 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.65928 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.65969 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.67160 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.67211 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.67635 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.67684 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.69181 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.69231 ERROR:  Retrying -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.69711 ERROR:  Trying to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
+60:66:611.69960 FATAL:  Failure to connect to database -> dial tcp [::1]:5432: connectex: No connection could be made because the target machine actively refused it.
